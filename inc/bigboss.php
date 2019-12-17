@@ -601,6 +601,54 @@ function gerauf($tipo, $selecione){ //Acho que poderia melhorar essa função us
 	}
 }
 
+/**
+ * Função que converte horas para segundos
+ *
+ * @param string $hora
+ */
+function sec($hora){
+    $exp = explode(":",$hora);
+    $hora = $exp[0] * 3600;
+    $min = $exp[1] * 60;
+    $soma = $hora + $min + $exp[2];
+    return $soma;
+}
+
+/**
+ * Função que registra log no banco de dados
+ *
+ * @param string $texto
+ */
+function log($texto){
+    $createtable = mysql_query("CREATE TABLE IF NOT EXISTS log ( id INT(11) AUTO_INCREMENT, texto TEXT, data DATETIME, PRIMARY KEY(id) )") or die(mysql_error());
+    $ins = ins("log","texto, data","'$texto', '".date("Y-m-d H:i:s")."'");
+}
+
+/**
+ * Get either a Gravatar URL or complete image tag for a specified email address.
+ *
+ * @param string $email The email address
+ * @param string $s Size in pixels, defaults to 80px [ 1 - 2048 ]
+ * @param string $d Default imageset to use [ 404 | mm | identicon | monsterid | wavatar ]
+ * @param string $r Maximum rating (inclusive) [ g | pg | r | x ]
+ * @param boole $img True to return a complete IMG tag False for just the URL
+ * @param array $atts Optional, additional key/value attributes to include in the IMG tag
+ * @return String containing either just a URL or a complete image tag
+ * @source https://gravatar.com/site/implement/images/php/
+ */
+function get_gravatar( $email, $s = 80, $d = 'mm', $r = 'g', $img = false, $atts = array() ) {
+    $url = 'https://www.gravatar.com/avatar/';
+    $url .= md5( strtolower( trim( $email ) ) );
+    $url .= "?s=$s&d=$d&r=$r";
+    if ( $img ) {
+        $url = '<img src="' . $url . '"';
+        foreach ( $atts as $key => $val )
+            $url .= ' ' . $key . '="' . $val . '"';
+        $url .= ' />';
+    }
+    return $url;
+}
+
 
 ##################
 ### PLUGINS
