@@ -348,84 +348,9 @@ function im($imagem, $h, $w){
 	return $thumbName;
 }
 
-/**
- * Exibe arquivos de uma pasta
- *
- * @param string $diretorio
- */
-function pasta($diretorio){
-
-}
-
-/**
- * Edita arquivo
- *
- * @param string $arquivo
- */
-function arq($arquivo){
-
-}
-
-################
-### PROTOCOLOS ###
-################
-
-/**
- * função para Enviar E-mail
- *
- * @param string $destino
- * @param string $assunto
- * @param string $mensagem
- * @param string $remetente
- * @param string $tipo	(html|texto)	
- * @param string $protocolo	(mail|smtp)
- */
-function sendmail($destino, $assunto, $mensagem, $remetente, $tipo, $protocolo){//o $tipo é se o e-mail é html ou somente texto, o $protocolo é se é usando a função mail ou smtp
-	if($protocolo == "mail"){ //criado por LeoCaseiro e adaptado por Tiago Floriano
-		if($tipo == "html"){
-			/* Para enviar email HTML, você precisa definir o header Content-type. */
-			$headers  = 'MIME-Version: 1.0\n';
-			$headers .= 'Content-type: text/html; charset=iso-8859-1\n';
-		}
-		/* headers adicionais */
-		$headers .= "From: $deNome <$deEmail>\r\n";
-		$headers .= "To: $paraNome <$paraEmail>\r\n";
-		/* Enviar o email */
-		if(mail($para, $assunto, $mensagem, $headers)) {
-			return true;
-		}else{
-			return false;
-		}
-	}else{
-		//smtp
-	}
-}
-
-
-
-/**
- * Criar conta de e-mail no cPanel
- *
- * @param string $email
- * @param string $senha
- */
-function criamail($email, $senha){
-
-}
-
-/**
- * Deleta e-mail do cPanel
- *
- * @param string $email
- * @param string $senha
- */
-function delmail($email,$senha){
-
-}
-
-##########################
-### UTILIDADES E INUTILIDADES ###
-##########################
+##################
+### UTILIDADES ###
+##################
 
 /**
  * Retira caracteres especiais de uma string

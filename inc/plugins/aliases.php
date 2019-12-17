@@ -44,10 +44,10 @@ function button($idname,$value,$onclick,$style=false){
 	}
 	e(">");
 }
-function includeJS($path){
+function js($path){
 	e("<script type=\"text/javascript\" src=\"$path\"></script>");
 }
-function includeCSS($path){
+function css($path){
 	e("<link rel=\"stylesheet\" type=\"text/css\" href=\"$path\">");
 }
 function br(){
