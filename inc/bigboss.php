@@ -82,12 +82,12 @@ function login($usuario, $senha, $destino){
  * função para desautenticar o USUÁRIO
  *
  * @name logoff
- * @param sting $usuario
- * @param string $senha	//na minha opinião, este valor é desnecessário para esta função By LeoCaseiro
  * @param string $destino
  */
-function logoff($usuario, $senha, $destino){
+function logoff($destino){
 	$ids = $_SESSION["idsession"];
+	$usuario = $_SESSION["login"];
+	$senha = $_SESSION["senha"];
 	$sel = sel("sessoes","ids = '$ids' and usuario = '$usuario and senha = '$senha'","","");
 	if(total($sel) != 0){
 		$r = fetch($sel);
